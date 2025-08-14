@@ -8,6 +8,7 @@ function ProductList({ onHomeClick }) {
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
   const cart = useSelector((state) => state.cart.items);
+  console.log("Cart items:", cart[""]); // Log the cart items to the console for debugging
 
   const dispatch = useDispatch();
 
@@ -405,14 +406,20 @@ function ProductList({ onHomeClick }) {
                         {/* Display plant description */}
                         <button
                           className={
-                            addedToCart[plant.name]
+                            cart.reduce((acc, item) => {
+                              return acc || item.name === plant.name;
+                            }, false)
                               ? "product-button added-to-cart"
                               : "product-button"
                           }
-                          disabled={addedToCart[plant.name]} // Disable button if already added to cart
+                          disabled={cart.reduce((acc, item) => {
+                            return acc || item.name === plant.name;
+                          }, false)} // Disable button if already added to cart
                           onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
                         >
-                          {addedToCart[plant.name]
+                          {cart.reduce((acc, item) => {
+                            return acc || item.name === plant.name;
+                          }, false)
                             ? "Added to Cart"
                             : "Add to Cart"}
                         </button>
