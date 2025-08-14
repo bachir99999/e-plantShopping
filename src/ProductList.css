@@ -172,6 +172,15 @@ body {
     font-size: 29px;
 
 }
+
+.product-category {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
 .plantname_heading{
    display: flex;
    align-items: center;
