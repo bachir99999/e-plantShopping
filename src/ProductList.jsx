@@ -351,6 +351,11 @@ function ProductList({ onHomeClick }) {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
+                <span className="cart_quantity_count">
+                  {Object.keys(addedToCart).length > 0
+                    ? Object.keys(addedToCart).length
+                    : 0}
+                </span>
               </h1>
             </a>
           </div>
